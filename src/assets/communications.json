@@ -1,0 +1,39 @@
+{
+    "HELLO": "Hello {{name}}",
+    "TOOLBAR": {
+        "TITLE": "Movie & Series List",
+        "SEARCH": "Search"
+    },
+    "AUTH": {
+        "LOGIN_TITLE": "Login Into Your Account",
+        "SIGNUP_TITLE": "Sign up Into Your Account",
+        "DONTACCOUNT_TITLE": "Don't have an account?",
+        "HAVEACCOUNT_TITLE": "Do you have an account?",
+        "LOGIN": "Login",
+        "SIGNUP": "Sign up",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "NAME": "Name",
+        "SUCCESS_SIGN_UP": "Success sign up"
+    },
+    "ERROR_MESSAGE": {
+        "REQUIRED": {
+            "EMAIL": "Email is required",
+            "PASSWORD": "Password is required"
+        },
+        "INVALID": {
+            "EMAIL": "Valid email address",
+            "PASSWORD": "Password should be at least {{value}} characters",
+            "NAME": "Name already exists"
+        }
+    },
+    "ADD": {
+        "ADD_MORE": "Add more"
+    },
+    "COMMENTS": {
+        "TITLE": "Leave your comment:",
+        "INPUT_TITLE": "Leave a comment",
+        "OTHER": "Users comments:",
+        "COMMENT": "Comment"
+    }
+}

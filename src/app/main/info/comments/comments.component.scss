@@ -1,0 +1,18 @@
+.comments-padding {
+    padding: 0 16px;
+}
+
+.comments-title {
+    margin: 16px 0;
+    display: block;
+}
+
+.comment-list-container {
+    display: flex;
+    flex-direction: column;
+
+    .comment-user-info {
+        display: flex;
+        justify-content: space-between;
+    }
+}

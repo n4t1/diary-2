@@ -1,0 +1,24 @@
+<span class="bold mat-h2 comments-title">{{'COMMENTS.TITLE' | translate}}</span>
+
+<mat-form-field class="w-100" appearance="outline">
+  <textarea matInput [placeholder]="'COMMENTS.INPUT_TITLE' | translate" [(ngModel)]="newComment"></textarea>
+</mat-form-field>
+
+<button mat-raised-button (click)="addComment()" [disabled]="!checkNewCommentLength()">{{'COMMENTS.COMMENT' |
+  translate}}</button>
+
+<div>
+  <span class="mat-h3 comments-title">{{'COMMENTS.OTHER' | translate}}</span>
+
+  <div class="comments-padding">
+    <div *ngFor="let item of showComments; last as last">
+      <div class="comment-list-container">
+        <p class="comment-user-info"><span class="bold">{{item.user_name}}</span><span>{{item.date | date:'short'}}</span></p>
+        <p>
+          {{item.message}}
+        </p>
+      </div>
+      <mat-divider *ngIf="!last"></mat-divider>
+    </div>
+  </div>
+</div>

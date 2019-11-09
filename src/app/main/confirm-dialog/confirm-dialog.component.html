@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Confirm</h1>
+<mat-dialog-content>
+  Are you sure to delete: {{data.title}}?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="confirm()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

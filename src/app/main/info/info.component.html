@@ -1,0 +1,113 @@
+<div class="h-100 info-container">
+  <div class="info-title">
+    <span class="mat-display-3">{{ info.original_title ? info.original_title : info.name }}</span>
+  </div>
+  <ng-container *ngIf="this.poster.seasons">
+    <div class="info-back-img">
+      <div class="img-conatainer" *ngFor="let seasonPoster of this.poster.seasons">
+        <img class="mat-elevation-z4" [src]="seasonPoster.season_poster" (click)="moreSeassonInfo(seasonPoster.season_number)" />
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="info-content">
+    <div class="info-main mat-h3 mat-elevation-z1">
+      <div class="rate">
+        <div class="rate-star-icon"></div>
+        <div class="rate-number">
+          <div>
+            <span class="bold mat-h1">{{ info.vote_average }}</span>
+            <span class="mat-small">/10</span>
+          </div>
+          <span class="mat-small">{{ info.vote_count }}</span>
+        </div>
+        <div class="v-border box"></div>
+        <button mat-button [matMenuTriggerFor]="rateStars">Rate This</button>
+
+        <mat-menu #rateStars="matMenu">
+          <div class="rate-star-bar">
+            <bar-rating [(rate)]="rate" [max]="10" [theme]="'stars'" (rateChange)="rateChange()" (hover)="rateHover()"
+              (leave)="rateLeave()"></bar-rating>
+            <div class="mat-h3">
+              <span class="bold">You:</span>
+              <span class="mat-h1">{{rate}}</span>
+            </div>
+          </div>
+        </mat-menu>
+      </div>
+      <img [src]="poster.main" />
+      <div>
+        <span class="bold mat-h2">Information:</span>
+        <div class="h-border box"></div>
+      </div>
+      <div>
+        <span class="bold">Type:</span> <span>{{ type }}</span>
+      </div>
+      <ng-container *ngIf="!isMovie()">
+        <div>
+          <span class="bold">Episodes:</span>
+          <span>{{ info.number_of_episodes }}</span>
+        </div>
+        <div>
+          <span class="bold">Seassons:</span>
+          <span>{{ info.number_of_seasons }}</span>
+        </div>
+      </ng-container>
+      <div>
+        <ng-container *ngIf="!isMovie()">
+          <span class="bold">Aired:</span>
+          <span>{{ info.first_air_date }} to
+            {{ info.in_production ? '?' : info.last_air_date }}</span>
+        </ng-container>
+        <ng-container *ngIf="isMovie()">
+          <span class="bold">Released:</span>
+          <span>{{info.release_date}}</span>
+        </ng-container>
+      </div>
+      <div>
+        <span class="bold">Producers:</span>
+        <span>
+          <span *ngFor="let producer of info.production_companies">
+            {{ producer.name }},</span>
+        </span>
+      </div>
+      <div>
+        <ng-container *ngIf="!isMovie()">
+          <span class="bold">Created by:</span>
+          <span>
+            <span *ngFor="let created of info.created_by">
+              {{ created.name }},</span>
+          </span>
+        </ng-container>
+        <ng-container *ngIf="isMovie()">
+          <span class="bold">Countries:</span>
+          <span>
+            <span *ngFor="let countrie of info.production_countries">
+              {{ countrie.iso_3166_1 }},</span>
+          </span>
+        </ng-container>
+      </div>
+      <div>
+        <span class="bold">Genres:</span>
+        <span>
+          <span *ngFor="let genre of info.genres"> {{ genre.name }},</span>
+        </span>
+      </div>
+      <div>
+        <span class="bold">HomePage:</span>
+        <span><a [href]="info.homepage">{{ info.homepage }}</a></span>
+      </div>
+    </div>
+
+    <div class="info-details">
+      {{ info.overview }}
+      <app-comments [matsInfo]="param"></app-comments>
+    </div>
+  </div>
+</div>
+
+<!-- <img [src]="poster.main"> -->
+
+<!-- <div class="info-backdrop">
+    <img [src]="poster.backdrop">
+  </div> -->

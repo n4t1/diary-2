@@ -1,0 +1,74 @@
+<mat-card class="card">
+  <mat-card-title class="card-title-container">
+    <span class="card-title click" (click)="moreMATSInfo()" [title]="basicTitle">{{ cardTitle }}</span>
+    <div class="card-title-more">
+      <mat-icon [matMenuTriggerFor]="moreMenu">more_vert</mat-icon>
+      <mat-menu #moreMenu="matMenu">
+        <button mat-menu-item (click)="deleteFilm()">
+          <mat-icon>delete_forever</mat-icon>
+          <span>Remove</span>
+        </button>
+        <!-- <button class="t-center" mat-menu-item>Modify</button> -->
+      </mat-menu>
+    </div>
+  </mat-card-title>
+  <mat-card-subtitle class="card-subtitle-container">
+    <span *ngIf="MATS.type !== 'movie'">
+      {{ MATS.user_season }}
+    </span>
+    <span *ngIf="MATS.type === 'movie'">
+      Movie
+    </span>
+  </mat-card-subtitle>
+  <mat-card-subtitle></mat-card-subtitle>
+  <div class="card-img-container">
+
+    <ng-container *ngIf="MATS.type === 'movie'">
+      <div class="card-img-content">
+        <img class="card-img" [src]="mainPosterPath" />
+        <div class="card-progress-button-container">
+          <div class="card-progress-button">
+            <button *ngIf="!episodeButton.removeDisabled" #removeButton mat-icon-button (click)="setEpisode(false)"
+              [disabled]="episodeButton.removeDisabled">
+              <mat-icon color="accent">remove_circle</mat-icon>
+            </button>
+            <button *ngIf="!episodeButton.addDisabled" #addButton mat-icon-button (click)="setEpisode(true)" [disabled]="episodeButton.addDisabled">
+              <mat-icon color="accent">add_circle</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="MATS.type !== 'movie'">
+      <div class="card-img-content" (mouseenter)="mouseEnterImg()" (mouseleave)="mouseLeaveImg()">
+        <img *ngIf="!mouseEnter" class="card-img" [src]="mainPosterPath" />
+        <img *ngIf="mouseEnter" class="card-img" [src]="seasonPosterPath" />
+        <div class="card-progress-button-container">
+          <div class="card-progress-button">
+            <button #removeButton mat-icon-button (click)="setEpisode(false)" [disabled]="episodeButton.removeDisabled">
+              <mat-icon color="accent">remove_circle</mat-icon>
+            </button>
+            <button #addButton mat-icon-button (click)="setEpisode(true)" [disabled]="episodeButton.addDisabled">
+              <mat-icon color="accent">add_circle</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <mat-card-content>
+    <div class="card-content">
+      <span>Progress:</span>
+      <span>
+        {{ MATS.user_episode }}
+        <ng-container *ngIf="MATS.type !== 'movie'">
+          / {{ MATS.episodes }}
+        </ng-container>
+      </span>
+    </div>
+  </mat-card-content>
+  <mat-card-footer class="card-footer-progress">
+    <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

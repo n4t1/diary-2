@@ -1,0 +1,25 @@
+@import "medias";
+
+// * {
+//   font-size: 1rem;
+// }
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.toolbar-row {
+  justify-content: space-evenly;
+}
+
+.small-search {
+  margin-left: 4rem; 
+}
+
+.large-search {
+  width: 100%;
+}
+
+.hello-user {
+  padding: 10px;
+}

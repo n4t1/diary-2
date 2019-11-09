@@ -1,0 +1,15 @@
+@import "mixins";
+
+@media(min-width: 600px) {
+  .media-min-hide {
+    display: none;
+  }
+  @include media-toolbars-value(1);
+}
+
+@media(max-width: 599px) {
+  .media-max-hide {
+    display: none;
+  }
+  @include media-toolbars-value(2);
+}

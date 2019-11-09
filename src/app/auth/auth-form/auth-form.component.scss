@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+.content {
+  margin: auto;
+  width: 400px;
+}
+
+.card-content > *, p > * {
+  width: 100%;
+}

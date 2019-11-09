@@ -1,0 +1,74 @@
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Add movie or series</h1>
+  <div mat-dialog-content>
+    <div class="container">
+      <div class="container container-form">
+        <div>
+          <label>Status: </label>
+          <mat-radio-group formControlName="status">
+            <mat-radio-button [value]="statusEnum.WATCH">Watching</mat-radio-button>
+            <mat-radio-button [value]="statusEnum.PLAN">Plan to watch</mat-radio-button>
+            <mat-radio-button [value]="statusEnum.DONE">Done</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <div>
+          <label>Type: </label>
+          <mat-radio-group formControlName="type">
+            <mat-radio-button [value]="typeEnum.MOVIE">Movie</mat-radio-button>
+            <mat-radio-button [value]="typeEnum.TV">Series</mat-radio-button>
+            <!-- <mat-radio-button value="youtube">Youtube movie</mat-radio-button>
+            <mat-radio-button value="ebook">Ebook</mat-radio-button> -->
+          </mat-radio-group>
+        </div>
+
+        <mat-form-field color="accent">
+          <input matInput placeholder="Title" type="text" formControlName="title" [matAutocomplete]="title" required (input)="searchMovieAndSeriesByQuery()">
+        </mat-form-field>
+
+        <mat-autocomplete #title="matAutocomplete">
+          <mat-option *ngFor="let film of titleResults" [value]="film.title || film.name" (onSelectionChange)="getMATS(film)">
+            <img *ngIf="film.poster_path" [src]="getPosterURL(film.poster_path)" [alt]="film.title || film.name" height="50px">
+            <span [matTooltip]="film.title || film.name">{{film.title || film.name}}</span>
+          </mat-option>
+        </mat-autocomplete>
+
+        <!-- <mat-form-field color="accent">
+          <input matInput placeholder="Seasons" type="text" formControlName="seasons" required [matAutocomplete]="seasons">
+          <mat-hint align="start">{{addForm.get('seasons')?.value || 0}}/{{seriesSeasons.length}}</mat-hint>
+        </mat-form-field> -->
+
+        <!-- <app-search placeholder="Title" (value)="getTitle($event)"></app-search> -->
+
+        <mat-form-field>
+          <mat-select formControlName="seasons" placeholder="Seasons" required>
+            <mat-option *ngFor="let season of seriesSeasons" [value]="season.name" (click)="getSeason(season)">
+              <img *ngIf="season.poster_path" [src]="getPosterURL(season.poster_path)" [alt]="season.name" height="50px">
+              <span [matTooltip]="season.name">{{season.name}}</span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field color="accent">
+          <input matInput placeholder="Episodes" type="number" formControlName="episodes" required>
+          <mat-hint align="start">{{addForm.get('episodes')?.value || 0}}/{{seriesSeasonEpisodes}}</mat-hint>
+        </mat-form-field>
+
+        <!-- <mat-form-field color="accent">
+          <input matInput placeholder="How many did you see episodes?" type="number" formControlName="userEpisodes" required>
+        </mat-form-field> -->
+
+        <!-- <div>
+      <label>Score: </label>
+      <mat-slider color="accent" thumbLabel tickInterval="1" min="1" max="10" step="1" value="1" formControlName="score"></mat-slider>
+      </div> -->
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>No Thanks</button>
+    <button mat-button type="submit" [disabled]="addForm.invalid">Ok</button>
+  </div>
+</form>

@@ -1,0 +1,58 @@
+<mat-table [dataSource]="films" aria-label="Elements">
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell class="prl-15" *matHeaderCellDef>Id</mat-header-cell>
+    <mat-cell class="p-15" *matCellDef="let row;let i = index;">{{i + 1}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="poster">
+    <mat-header-cell class="prl-15" *matHeaderCellDef>Poster</mat-header-cell>
+    <mat-cell class="p-15" *matCellDef="let row;">
+      <img [src]="getPosterURL(row.poster)" height="50px">
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell class="prl-15" *matHeaderCellDef>Title</mat-header-cell>
+    <mat-cell class="p-15" *matCellDef="let row">
+      <div style="margin-right: auto;">
+        {{row.title}} {{row.user_season}}
+      </div>
+      <button mat-icon-button (click)="deleteFilm(row)">
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <mat-header-cell class="prl-15" *matHeaderCellDef>Type</mat-header-cell>
+    <mat-cell class="p-15" *matCellDef="let row">{{row.type}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="user_episode">
+    <mat-header-cell class="prl-15" *matHeaderCellDef>Progress</mat-header-cell>
+    <mat-cell class="p-15" *matCellDef="let row">
+      <div style="margin-right: auto;">
+        {{row.user_episode}}
+        <ng-container *ngIf="row.type !== 'movie'">
+          / {{row.episodes}}
+        </ng-container>
+      </div>
+      <ng-container *ngIf="row.type !== 'movie'">
+        <button mat-icon-button [disabled]="row.user_episode < 1" (click)="removeEpisode(row.id)" class="w-30">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>
+        <button mat-icon-button [disabled]="row.status === 'done'" (click)="addEpisode(row.id)" class="w-30">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </ng-container>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div class="spinner-position" *ngIf="spinner">
+  <mat-spinner strokeWidth="5" diameter="40"></mat-spinner>
+</div>

@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <mat-toolbar-row>
+    <span class="click" (click)="navigateToMain()">{{'TOOLBAR.TITLE' | translate}}</span>
+    <span class="fill-remaining-space"></span>
+    <button mat-button *ngIf="islogin && userName" [matMenuTriggerFor]="appMenu">
+        <mat-icon>person</mat-icon>
+      {{ 'HELLO' | translate:{name: userName} }}
+    </button>
+    <app-search *ngIf="islogin" class="small-search media-max-hide"></app-search>
+
+    <!-- <button mat-button (click)="sidenavOpen()">Toggle</button> -->
+
+    <mat-menu #appMenu="matMenu">
+      <!-- <button mat-menu-item (click)="openDialog()">Dodaj</button>
+      <mat-divider></mat-divider> -->
+      <ng-template matMenuContent>
+        <div class="hello-user mat-title">{{ 'HELLO' | translate:{name: userName} }}</div>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="logout()">LogOut</button>
+      </ng-template>
+    </mat-menu>
+    <!-- 
+    <button *ngIf="islogin" mat-icon-button [matMenuTriggerFor]="appMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button> -->
+
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="islogin" class="media-min-hide toolbar-row">
+    <app-search class="large-search"></app-search>
+  </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,26 @@
+<mat-tab-group class="mat-tab-container" mat-align-tabs="center" animationDuration="0ms">
+  <mat-tab label="All">
+    <!-- <app-table status="all"></app-table> -->
+    <div>
+      <app-cards [MATSs]="MATS.all"></app-cards>
+    </div>
+  </mat-tab>
+  <mat-tab label="Watching">
+    <!-- <app-table status="watch" [films]="MATS.watch"></app-table> -->
+    <div>
+      <app-cards [MATSs]="MATS.watch"></app-cards>
+    </div>
+  </mat-tab>
+  <mat-tab label="Plan to watch">
+    <!-- <app-table status="plan" [films]="MATS.plan"></app-table> -->
+    <div>
+      <app-cards [MATSs]="MATS.plan"></app-cards>
+    </div>
+  </mat-tab>
+  <mat-tab label="Done">
+    <!-- <app-table status="done" [films]="MATS.done"></app-table> -->
+    <div>
+      <app-cards [MATSs]="MATS.done"></app-cards>
+    </div>
+  </mat-tab>
+</mat-tab-group>

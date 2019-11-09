@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+@import "all";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/styles/theming";
+@import "./assets//styles/scrollbar";
+@import '~ngx-bar-rating/themes/br-stars-theme';
+
+
+body {
+  margin: 0;
+  font-size: $g-font-size;
+  font-family: Roboto;
+}
+
+$toolbar-bg-color:  #6a6a6a !default;
+$toolbar-color: #fff !default;
+
+$card-bg-color: #fff !default;
+$card-color: #000 !default;
+$card-border-color: none !default;
+$card-border-width: none !default;
+$card-shadow: none !default;
+
+$button-bg-color: #fff;
+$button-bg-color-hover: #fff;
+$button-color: #000;
+
+.mat-menu-content:not(:empty) {
+  padding: 0;
+}

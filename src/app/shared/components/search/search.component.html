@@ -1,0 +1,17 @@
+<mat-form-field color="accent" appearance="standard">
+  <input #input matInput type="text" [placeholder]="placeholder" [matAutocomplete]="auto" [(ngModel)]="title">
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-optgroup *ngFor="let group of titleResults" [label]="group.group | uppercase">
+    <mat-option *ngFor="let mats of group.value" (click)="moreMATSInfo(mats)" [value]="mats.title || mats.name">
+      <img *ngIf="mats.poster_path" [src]="getPosterURL(mats.poster_path)" [alt]="mats.title || mats.name"
+        height="50px">
+      <span [matTooltip]="mats.title || mats.name">{{mats.title || mats.name}}</span>
+    </mat-option>
+  </mat-optgroup>
+  <mat-option *ngIf="spinner">
+    <app-spinner [spinner]="spinner"></app-spinner>
+  </mat-option>
+</mat-autocomplete>

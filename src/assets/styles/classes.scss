@@ -1,0 +1,52 @@
+.w-100 {
+    width: 100%;
+}
+
+.click {
+    cursor: pointer;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.h-border {
+    border-bottom: solid 1px #bebebe;
+
+    &.box {
+        width: 100%;
+        height: 1px;
+    }
+}
+
+.border {
+    border: solid 1px #ebebeb;
+}
+
+.v-border {
+    border-left: solid 1px #bebebe;
+
+    &.box {
+        width: 1px;
+        height: 100%;
+    }
+}
+
+.t-center {
+    text-align: center;
+
+    &.mat-menu-item {
+        text-align: center;
+    }
+}
+
+.mat-menu-content {
+    .rate-star-bar {
+        margin: 0 10px;
+
+    }
+}

@@ -1,0 +1,11 @@
+<div class="card-list">
+    <div *ngFor="let MATS of MATSs">
+        <app-card [MATS]="MATS" [smallWindow]="smallWindow"></app-card>
+    </div>
+</div>
+
+<!-- <div class="spinner-position" *ngIf="spinner">
+    <mat-spinner strokeWidth="5" diameter="40"></mat-spinner>
+</div> -->
+
+<app-spinner [spinner]="spinner"></app-spinner>

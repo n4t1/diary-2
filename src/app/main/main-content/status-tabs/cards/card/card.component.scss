@@ -1,0 +1,85 @@
+.card {
+    width: 200px;
+    max-width: 200px;
+    margin: 20px;
+    text-align: center;
+    position: relative;
+    padding: 16px 0;
+}
+
+.card-img-container {
+    max-height: 300px;
+    margin-bottom: 16px;
+
+    .card-img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .card-img-content {
+        position: relative;
+
+        .card-progress-button-container {
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+
+            .card-progress-button {
+                display: flex;
+                justify-content: space-around;
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+        }
+    }
+}
+
+.card-title-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+
+    .card-title {
+        padding: 0 6px;
+        text-align: left;
+    }
+
+    .card-title-more {
+        cursor: pointer;
+    }
+}
+
+.card-footer-progress {
+    margin: 0;
+    margin-bottom: -16px;
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media(max-width: 500px) {
+    .card {
+        width: 145px;
+        max-width: 145px;
+        margin: 10px;
+    }
+
+    .card-title-container {
+        font-size: 16px;
+    }
+
+    .card-subtitle-container {
+        font-size: 12px;
+    }
+
+    .card-img-container {
+        max-height: 235px;
+        margin-bottom: 10px;
+
+        .card-img {
+            height: 235px;
+        }
+    }
+}

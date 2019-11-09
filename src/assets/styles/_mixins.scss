@@ -1,0 +1,12 @@
+@mixin media-toolbars-value($toolbarsValue: 1) {
+    .media-main-content {
+        top: 64px * $toolbarsValue;
+      }
+}
+
+@mixin set-font-typography($weight, $size, $spacing, $family: inherit) {
+    font-family: $family;
+    font-weight: $weight;
+    font-size: $size;
+    letter-spacing: $spacing;
+}
